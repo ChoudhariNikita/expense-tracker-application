@@ -1,0 +1,43 @@
+<div class="mt-4">
+  <div class="alert alert-danger" ng-show="error">
+    <strong>Error!</strong> {{ error }}
+  </div>
+  <div class="text-center">
+    <!-- <a href="#!/add" class="btn btn-success mt-3">Add Expense</a> -->
+    <add-expense></add-expense>
+  </div>
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="expense in expenses">
+        <td>{{ expense.title | uppercase }}</td>
+        <td>{{ expense.amount | currency }}</td>
+        <td>
+          <a href="#!/edit/{{ expense.id }}" class="btn btn-primary btn-sm">
+            Edit
+          </a>
+          <button
+            class="btn btn-danger btn-sm"
+            ng-click="deleteExpense(expense.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr class="text-info bg-light">
+        <td>
+          <strong>TOTAL</strong>
+        </td>
+        <td colspan="2">
+          <strong>{{ totalAmount() | currency }}</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

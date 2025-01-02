@@ -1,0 +1,21 @@
+<div class="mt-4">
+    <!-- {{addUpdateForm.$valid}} -->
+    <div class="alert alert-danger" ng-show="addUpdateForm.$dirty && addUpdateForm.$invalid">
+        <strong>Please fill in the form correctly!</strong>
+    </div>
+    <h2>{{ isEdit ? 'Edit Expense' : 'Add Expense' }}</h2>
+    <form name="addUpdateForm" ng-submit="addUpdateForm.$valid && saveExpense()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" ng-model="expense.title" placeholder="Expense Title" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" class="form-control" ng-model="expense.amount"  placeholder="0.0" required>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            {{ isEdit ? 'Update Expense' : 'Add Expense' }}
+        </button>
+        <a href="#/" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
